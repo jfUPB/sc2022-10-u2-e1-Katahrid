@@ -24,7 +24,8 @@ void arrayCommon(struct array *, struct array *, struct array *);
 void printArray(struct array *);
 void freeMemory(struct array *, struct array *, struct array *);
 
-void initArray(struct array *arr){
+void initArray(struct array *arr)
+{
     arr->pdata = NULL;
     arr->size = -1;
 }
@@ -40,23 +41,17 @@ void printArray(struct array *parr)
 
 void getArray(struct array *parr)
 {
-    int SizeA;
-    scanf("%i",&sizeA);
-    int age[sizeA];
-    for(int i=0;i < sizeA;i++)
-{
-    scanf("%i",&age[i]);
-}
-for(int i = 0; i < sizeA; i++)
-{
-    
-}
-return 0;
+    int tam;
+    scanf("%d", &tam);
+    int arreglo[tam];
+    for (int i = 0; i < tam; i++)
+    {
+        scanf("%d", &arreglo[i]);
+    }
 }
 
 void arrayCommon(struct array *arrIn1, struct array *arrIn2, struct array *arrOut)
 {
-    
 }
 
 void freeMemory(struct array *arr1, struct array *arr2, struct array *arr3)
@@ -90,10 +85,9 @@ int main(void)
     struct array *arr1 = malloc(sizeof(struct array) * 1);
     initArray(arr1);
     struct array *arr2 = malloc(sizeof(struct array) * 1);
-    initArray(arr2);    
+    initArray(arr2);
     struct array *arr3 = malloc(sizeof(struct array) * 1);
     initArray(arr3);
-
 
     LOG("Init command loop\n");
 
@@ -138,7 +132,7 @@ int main(void)
         else if (strncmp(commandBuf, "exit", strlen("exit")) == 0)
         {
             LOG("running exit command\n");
-            freeMemory(arr1,arr2,arr3);
+            freeMemory(arr1, arr2, arr3);
             break;
         }
     }
