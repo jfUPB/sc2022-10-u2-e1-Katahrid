@@ -40,7 +40,21 @@ void printArray(struct array *parr)
 
 void getArray(struct array *parr)
 {
-    
+    int SizeA;
+    printf("Escriba el tamaño del arreglo Por favor\n");
+    scanf("%i",&sizeA);
+    int age[sizeA];
+    for(int i=0;i < sizeA;i++)
+{
+    printf("Ingresa el valor %i\n",i+1);
+    scanf("%i",&age[i]);
+}
+printf("Los valores del arreglo son:\n");
+for(int i = 0; i < sizeA; i++)
+{
+    printf("%i-\n",age[i]);
+}
+return 0;
 }
 
 void arrayCommon(struct array *arrIn1, struct array *arrIn2, struct array *arrOut)
