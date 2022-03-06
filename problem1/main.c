@@ -41,8 +41,8 @@ void printArray(struct array *parr)
 
 void getArray(struct array *parr)
 {
-    char Tam[32];
-    char tama[32];
+    char Tam[16];
+    char tama[16];
 
     if(fgets(tam, 5, stdin) != NULL)
 {
