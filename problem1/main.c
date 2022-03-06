@@ -40,24 +40,24 @@ void printArray(struct array *parr)
 }
 
 void getArray(struct array *parr)
-{
-  char tam[16];
-  char tama[16];
+{               //Definicion de entradas 
+  char tam[16]; //tamaño
+  char tama[16]; //cantidad de datos
 
-    if(fgets(tam, 5, stdin) != NULL)
+    if(fgets(tam, 5, stdin) != NULL) //leer el teclado del pc
     {
         tam[strlen(tam) -1 ] = 0;
 
-        int lector = sscanf(tam,"%d",&parr->size);
+        int lector = sscanf(tam,"%d",&parr->size); //leer lo que se escirbio y cambiarlo a un lenguaje que reconozca el computador
 
 
-        parr->pdata = malloc(sizeof(int)*parr->size);
+        parr->pdata = malloc(sizeof(int)*parr->size); //lanzar a la memoria dinamica
 
 
         for(int i = 0;i<parr->size;i++){
-            if(fgets(tama, 5, stdin) != NULL)
+            if(fgets(tama, 5, stdin) != NULL) // aqui pasa lo mismo que en el anterior ciclo pero pide los datos que estan dentro del arreglo
             {
-                int lectorx = sscanf(tama,"%d",parr->pdata + i);
+                int lectorx = sscanf(tama,"%d",parr->pdata + i); // y repite el ciclo hasta coger todos los datos
             }
         }
     }
@@ -65,20 +65,62 @@ void getArray(struct array *parr)
 
 void arrayCommon(struct array *arrIn1, struct array *arrIn2, struct array *arrOut)
 {
-    int size;
-    arrOut->size = 0;
+    int size;      //recoge el dato del tamaño de los arreglos
+    arrOut->size = 0;   
 
-    if (arrIn1->size>arrIn2->size)
+    if (arrIn1->size>arrIn2->size)    //se comparan los tamaños para saber el mayor y lo guarda para la memoria dinamica
     {
         size = arrIn1->size;
     }
-    else if (arrIn2->size>arrIn1->size)
+    else if (arrIn2->size>arrIn1->size)        //si el arreglo 1 es mayor, si es menor y si son iguales
     {
         size = arrIn2->size;
     }
     else if (arrIn2->size == arrIn1->size)
     {
-        size = arrIn1->size;
+        size = arrIn1->size;  
+    }
+
+    int camb[size];     //cambia el dato de la memoria dinamica
+    for (int i = 0; i < size; i++)
+    {
+        camb[i]=-1;
+    }
+
+    int rev=0;          //contador que revisa los arreglos para saber si estan escritos correctamente
+
+    for (int i = 0; i<arrIn1->size; i++) 
+    {
+        for (int j = 0; j<arrIn2->size; j++)
+        {
+            if (arrIn1->pdata[i]==arrIn2->pdata[j]) //Leer los datos del primer arreglo y compara uno a uno los datos con los datos del segundo arreglo
+            {
+               int comp = 0;
+               for (int k = 0; k < size; k++)
+               {
+                   if (arrIn1->pdata[i] == camb[k])
+                   {
+                       k = size;
+                       comp = 1;
+                   }
+                   
+               }
+               if (comp == 0)
+               {
+                   camb[rev] = arrIn2->pdata[j];
+                   rev++;
+                   arrOut->size ++;
+               }
+               
+            }
+            
+        }
+        
+    }
+    arrOut->pdata = malloc(sizeof(int)*arrOut->size); //se guardan los resultados en la memoria dinamica
+    for (int i = 0; i < arrOut->size; i++)
+    {
+        *(arrOut->pdata+i) = camb[i];
     }
 }
 
