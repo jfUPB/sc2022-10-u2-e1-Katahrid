@@ -42,6 +42,7 @@ void printArray(struct array *parr)
 void getArray(struct array *parr)
 {
     char Tam[32];
+    char tama[32];
 
     if(fgets(tam, 5, stdin) != NULL)
 {
@@ -51,6 +52,13 @@ void getArray(struct array *parr)
 
     parr->pdata = malloc(sizeof(int)*parr->size);
 
+    for(int i = 0;i<parr->size;i++)
+    {
+        if(fgets(tama, 5, stdin) !=NULL);
+        {
+            int lectorfacha =sscanf(tama,"%d",parr->pdata + i);
+        }      
+    }
 }
 }
 
