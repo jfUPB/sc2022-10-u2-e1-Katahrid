@@ -65,6 +65,21 @@ void getArray(struct array *parr)
 
 void arrayCommon(struct array *arrIn1, struct array *arrIn2, struct array *arrOut)
 {
+    int size;
+    arrOut->size = 0;
+
+    if (arrIn1->size>arrIn2->size)
+    {
+        size = arrIn1->size;
+    }
+    else if (arrIn2->size>arrIn1->size)
+    {
+        size = arrIn2->size;
+    }
+    else if (arrIn2->size == arrIn1->size)
+    {
+        size = arrIn1->size;
+    }
 }
 
 void freeMemory(struct array *arr1, struct array *arr2, struct array *arr3)
