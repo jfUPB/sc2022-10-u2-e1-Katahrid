@@ -41,25 +41,26 @@ void printArray(struct array *parr)
 
 void getArray(struct array *parr)
 {
-    char Tam[16];
-    char tama[16];
+  char tam[16];
+  char tama[16];
 
     if(fgets(tam, 5, stdin) != NULL)
-{
-    tam[strlen(tam) -1 ] = 0;
-
-    int lector = sscanf(tam,"%d";&parr->size);
-
-    parr->pdata = malloc(sizeof(int)*parr->size);
-
-    for(int i = 0;i<parr->size;i++)
     {
-        if(fgets(tama, 5, stdin) !=NULL)
-        {
-            int lectorfacha =sscanf(tama,"%d",parr->pdata + i);
-        }      
+        tam[strlen(tam) -1 ] = 0;
+
+        int lector = sscanf(tam,"%d",&parr->size);
+
+
+        parr->pdata = malloc(sizeof(int)*parr->size);
+
+
+        for(int i = 0;i<parr->size;i++){
+            if(fgets(tama, 5, stdin) != NULL)
+            {
+                int lectorx = sscanf(tama,"%d",parr->pdata + i);
+            }
+        }
     }
-}
 }
 
 void arrayCommon(struct array *arrIn1, struct array *arrIn2, struct array *arrOut)
